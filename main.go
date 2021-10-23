@@ -7,8 +7,13 @@ import (
 )
 
 func main() {
-    gameController := controllers.NewController(4, 5, 5, 100, 6)
-    game, err := gameController.CreateGame()
+    gameController := controllers.NewController()
+    game, err := gameController.
+        SetPlayerCount(5).
+        SetLadderCount(5).
+        SetSnakeCount(5).
+        SetBoxCount(100).
+        CreateGame()
     if err != nil {
         println(fmt.Errorf("error in creating game due to - %s", err.Error()))
         return
